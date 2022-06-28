@@ -41,12 +41,12 @@ public class EmployeResource  {
 
 
     @PostMapping("/save")
-    public ResponseEntity<Response> saveEmploye(@RequestBody @Valid Employe server) {
+    public ResponseEntity<Response> saveEmploye(@RequestBody @Valid Employe employe) {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(now())
-                        .data(of("server", employeService.create(server)))
-                        .message("Server created")
+                        .data(of("employe", employeService.create(employe)))
+                        .message("Employe created")
                         .status(CREATED)
                         .statusCode(CREATED.value())
                         .build()
