@@ -20,7 +20,7 @@ import org.springframework.http.ResponseEntity;
 
 
 @RestController
-@RequestMapping("/server")
+@RequestMapping("/employe")
 @RequiredArgsConstructor
 public class EmployeResource  {
     private final EmployeServiceImpl employeService;
