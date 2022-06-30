@@ -19,9 +19,13 @@ public class Employe {
     @Id
     @GeneratedValue(strategy =  AUTO)
     private Long id;
+
     private String nom;
+
     private String prenom;
+
     private String cin;
+    
     private LocalDate dateNaissance;
     
 
