@@ -1,7 +1,9 @@
 package ma.emsi.hotelManager;
 
 import ma.emsi.hotelManager.model.Employe;
+import ma.emsi.hotelManager.model.Facture;
 import ma.emsi.hotelManager.repository.EmployeRepository;
+import ma.emsi.hotelManager.repository.FactureRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,15 +24,26 @@ public class HotelManagerApplication {
 
 
 	@Bean
-	CommandLineRunner run(EmployeRepository employeRepository) {
+	CommandLineRunner runEmploye(EmployeRepository employeRepository) {
 		return args -> {
-			employeRepository.save(new Employe(null,"Ahmed","Bachar","AA159", LocalDate.of(1998, 11, 10) ));
-			employeRepository.save(new Employe(null,"Rania","Brahmi","RA167", LocalDate.of(1995, 5, 2) ));
-			employeRepository.save(new Employe(null,"Mohammed","Arharbi","ABC85", LocalDate.of(1999, 4, 18) ));
-			employeRepository.save(new Employe(null,"Mehdi","moataz","AB954", LocalDate.of(2000, 9, 25) ));
+			employeRepository.save(new Employe(null,"Ahmed","Bachar",1,"AA159","Rabat","ahmed@gmail.com", LocalDate.of(1998, 11, 10) ));
+			employeRepository.save(new Employe(null,"Rania","Brahmi",1,"RA167","Casablanca","rania@gmail.com", LocalDate.of(1995, 5, 2) ));
+			employeRepository.save(new Employe(null,"Mohammed","Arharbi",1,"ABC85","Rabat","mohammed@gmail.com", LocalDate.of(1999, 4, 18) ));
+			employeRepository.save(new Employe(null,"Mehdi","moataz",1,"AB954","Rabat","mehhdi@gmail.com", LocalDate.of(2000, 9, 25) ));
 
 		};
 	}
+
+	@Bean
+	CommandLineRunner runFacture(FactureRepository factureRepository) {
+		return args -> {
+			factureRepository.save(new Facture(null,1500.0,0.0));
+			factureRepository.save(new Facture(null,2000.0,0.0));
+			factureRepository.save(new Facture(null,3500.0,3000.0));
+			factureRepository.save(new Facture(null,2000.0,1000.0));
+		};
+	}
+
 
 	@Bean
 	public CorsFilter corsFilter() {
