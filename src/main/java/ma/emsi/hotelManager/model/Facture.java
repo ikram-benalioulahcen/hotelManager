@@ -3,9 +3,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+
+import java.util.List;
 
 import static javax.persistence.GenerationType.AUTO;
 
@@ -20,4 +20,11 @@ public class Facture {
 
     private Double montant;
     private Double montantRegle;
+
+    @OneToOne
+    private Reservation reservation;
+
+    @ManyToMany
+    private List<Service> services;
+
 }

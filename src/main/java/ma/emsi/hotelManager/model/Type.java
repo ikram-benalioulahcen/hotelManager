@@ -7,7 +7,10 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.ListResourceBundle;
 
 import static javax.persistence.GenerationType.AUTO;
 
@@ -23,4 +26,7 @@ public class Type {
     private String description;
     private int nbrLit;
     private int nbrMaxPer;
+
+    @OneToMany(mappedBy = "type")
+    private List<Chambre> chambres;
 }

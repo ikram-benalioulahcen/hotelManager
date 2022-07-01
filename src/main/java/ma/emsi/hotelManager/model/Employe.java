@@ -3,13 +3,13 @@ package ma.emsi.hotelManager.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 
 import static javax.persistence.GenerationType.AUTO;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Entity
@@ -26,6 +26,11 @@ public class Employe {
     private String adresse;
     private String email;
     private LocalDate dateNaissance;
-    
+
+    @OneToOne
+    private Authentification authentification;
+
+    @OneToMany(mappedBy = "employe")
+    private List<Reservation> reservations;
 
 }

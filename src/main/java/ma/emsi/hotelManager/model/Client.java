@@ -4,11 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static javax.persistence.GenerationType.AUTO;
 
@@ -28,4 +27,8 @@ public class Client {
     private String email;
     private boolean subscription;
     private LocalDate dateNaissance;
+
+    @OneToMany(mappedBy = "client")
+    private List<Reservation> reservations;
+
 }

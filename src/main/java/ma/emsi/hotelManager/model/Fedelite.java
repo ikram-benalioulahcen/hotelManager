@@ -18,4 +18,7 @@ public class Fedelite {
     @Id
     @GeneratedValue(strategy =  AUTO)
     private Long id;
+
+
+
 }

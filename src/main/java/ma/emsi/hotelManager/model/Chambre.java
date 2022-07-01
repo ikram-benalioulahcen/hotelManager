@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import static javax.persistence.GenerationType.AUTO;
 
@@ -25,4 +22,10 @@ public class Chambre {
     private boolean disponibilite;
     private String telephone;
     private Long prix;
+
+    @ManyToOne
+    private Reservation reservation;
+
+    @ManyToOne
+    private Type type;
 }

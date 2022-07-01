@@ -22,7 +22,7 @@ public class TypeResource  {
     private final TypeServiceImpl typeService;
 
     @GetMapping("/list")
-    public ResponseEntity<Response> gettypes() throws InterruptedException {
+    public ResponseEntity<Response> getTypes() throws InterruptedException {
         TimeUnit.SECONDS.sleep(3);
         return ResponseEntity.ok(
                 Response.builder()
@@ -37,7 +37,7 @@ public class TypeResource  {
 
 
     @PostMapping("/save")
-    public ResponseEntity<Response> savetype(@RequestBody @Valid Type type) {
+    public ResponseEntity<Response> saveType(@RequestBody @Valid Type type) {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(now())

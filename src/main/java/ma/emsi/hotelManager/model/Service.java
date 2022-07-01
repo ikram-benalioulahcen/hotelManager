@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+import java.util.List;
 
 import static javax.persistence.GenerationType.AUTO;
 
@@ -26,4 +29,7 @@ public class Service {
     private String description;
 
     private double prix;
+
+    @ManyToMany
+    private List<Facture> factures;
 }

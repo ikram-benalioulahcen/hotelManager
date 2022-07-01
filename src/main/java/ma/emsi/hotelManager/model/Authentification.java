@@ -19,4 +19,7 @@ public class Authentification  {
     private String username;
     private String password;
 
+    @OneToOne
+    private Employe employe;
+
 }

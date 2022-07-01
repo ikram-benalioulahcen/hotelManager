@@ -4,10 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 import static javax.persistence.GenerationType.AUTO;
 
@@ -24,5 +23,18 @@ public class Reservation {
     private int checkIn;
     private String nom;
     private Date dateReservation;
+
+    @OneToOne
+    private Facture facture;
+
+    @ManyToOne
+    private Employe employe;
+
+    @ManyToOne
+    private Client client;
+
+    @OneToMany(mappedBy = "reservation")
+    private List<Chambre> chambres;
+
 
 }
