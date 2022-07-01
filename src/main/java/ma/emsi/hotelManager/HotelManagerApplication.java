@@ -1,13 +1,7 @@
 package ma.emsi.hotelManager;
 
-import ma.emsi.hotelManager.model.Chambre;
-import ma.emsi.hotelManager.model.Client;
-import ma.emsi.hotelManager.model.Employe;
-import ma.emsi.hotelManager.model.Facture;
-import ma.emsi.hotelManager.repository.ChambreRepository;
-import ma.emsi.hotelManager.repository.ClientRepository;
-import ma.emsi.hotelManager.repository.EmployeRepository;
-import ma.emsi.hotelManager.repository.FactureRepository;
+import ma.emsi.hotelManager.model.*;
+import ma.emsi.hotelManager.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -61,6 +55,14 @@ public class HotelManagerApplication {
 			chambreRepository.save(new Chambre( null,15,2,true,"123456", 200L));
 			chambreRepository.save(new Chambre( null,20,3,true,"123456",600L));
 			chambreRepository.save(new Chambre( null,10,2,false,"123456",500L));
+		};
+	}
+
+	@Bean
+	CommandLineRunner runFedelite(FedeliteRepository fedeliteRepository) {
+		return args -> {
+			fedeliteRepository.save(new Fedelite(null));
+			fedeliteRepository.save(new Fedelite(null));
 		};
 	}
 

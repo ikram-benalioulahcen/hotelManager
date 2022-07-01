@@ -2,8 +2,10 @@ package ma.emsi.hotelManager.resource;
 
 import lombok.RequiredArgsConstructor;
 import ma.emsi.hotelManager.model.Facture;
+import ma.emsi.hotelManager.model.Fedelite;
 import ma.emsi.hotelManager.model.Response;
 import ma.emsi.hotelManager.service.implementation.FactureServiceImpl;
+import ma.emsi.hotelManager.service.implementation.FedeliteServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,20 +18,20 @@ import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 
 @RestController
-@RequestMapping("/facture")
+@RequestMapping("/fedelite")
 @RequiredArgsConstructor
-public class FactureResource {
+public class FedeliteResource {
 
-    private final FactureServiceImpl factureService;
+    private final FedeliteServiceImpl fedeliteService;
 
     @GetMapping("/list")
-    public ResponseEntity<Response> getFacture() throws InterruptedException {
+    public ResponseEntity<Response> getFedelites() throws InterruptedException {
         TimeUnit.SECONDS.sleep(3);
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(now())
-                        .data(of("facture", factureService.list(30)))
-                        .message("Factures retrieved")
+                        .data(of("fedelite", fedeliteService.list(30)))
+                        .message("Fedelites retrieved")
                         .status(OK)
                         .statusCode(OK.value())
                         .build()
@@ -38,12 +40,12 @@ public class FactureResource {
 
 
     @PostMapping("/save")
-    public ResponseEntity<Response> saveFacture(@RequestBody @Valid Facture facture) {
+    public ResponseEntity<Response> saveFedelite(@RequestBody @Valid Fedelite fedelite) {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(now())
-                        .data(of("facture", factureService.create(facture)))
-                        .message("Facture created")
+                        .data(of("fedelite", fedeliteService.create(fedelite)))
+                        .message("Fedelite created")
                         .status(CREATED)
                         .statusCode(CREATED.value())
                         .build()
@@ -55,8 +57,8 @@ public class FactureResource {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(now())
-                        .data(of("facture", factureService.get(id)))
-                        .message("Facture retrieved")
+                        .data(of("fedelite", fedeliteService.get(id)))
+                        .message("Fedelite retrieved")
                         .status(OK)
                         .statusCode(OK.value())
                         .build()
@@ -68,8 +70,8 @@ public class FactureResource {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(now())
-                        .data(of("facture", factureService.delete(id)))
-                        .message("Facture deleted")
+                        .data(of("fedelite", fedeliteService.delete(id)))
+                        .message("Fedelite deleted")
                         .status(OK)
                         .statusCode(OK.value())
                         .build()
