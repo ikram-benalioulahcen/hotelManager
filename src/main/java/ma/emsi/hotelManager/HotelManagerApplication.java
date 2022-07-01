@@ -56,10 +56,10 @@ public class HotelManagerApplication {
 	@Bean
 	CommandLineRunner runAuthentification(AuthentificationRepository authentificationRepository) {
 		return args -> {
-			authentificationRepository.save(new Authentification("Nour Belyazidi","belyazidi1"));
-			authentificationRepository.save(new Authentification("admin","admin"));
-			authentificationRepository.save(new Authentification("user","user"));
-			authentificationRepository.save(new Authentification("admin1","admin1"));
+			authentificationRepository.save(new Authentification(null,"Nour Belyazidi","belyazidi1"));
+			authentificationRepository.save(new Authentification(null,"admin","admin"));
+			authentificationRepository.save(new Authentification(null,"user","user"));
+			authentificationRepository.save(new Authentification(null,"admin1","admin1"));
 		};
 	}
 
