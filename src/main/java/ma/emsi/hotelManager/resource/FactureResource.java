@@ -63,7 +63,7 @@ public class FactureResource {
         );
     }
 
-    @DeleteMapping("/delete/{id}")
+    @GetMapping("/delete/{id}")
     public ResponseEntity<Response> deleteFacture(@PathVariable("id") Long id) {
         return ResponseEntity.ok(
                 Response.builder()

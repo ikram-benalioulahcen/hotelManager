@@ -63,7 +63,7 @@ public class ClientResource {
         );
     }
 
-    @DeleteMapping("/delete/{id}")
+    @GetMapping("/delete/{id}")
     public ResponseEntity<Response> deleteClient(@PathVariable("id") Long id) {
         return ResponseEntity.ok(
                 Response.builder()
