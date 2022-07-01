@@ -1,11 +1,7 @@
 package ma.emsi.hotelManager;
 
-import ma.emsi.hotelManager.model.Client;
-import ma.emsi.hotelManager.model.Employe;
-import ma.emsi.hotelManager.model.Facture;
-import ma.emsi.hotelManager.repository.ClientRepository;
-import ma.emsi.hotelManager.repository.EmployeRepository;
-import ma.emsi.hotelManager.repository.FactureRepository;
+import ma.emsi.hotelManager.model.*;
+import ma.emsi.hotelManager.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,8 +13,10 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @SpringBootApplication
@@ -54,6 +52,57 @@ public class HotelManagerApplication {
 		};
 	}
 
+//autentification
+	@Bean
+	CommandLineRunner runAuthentification(AuthentificationRepository authentificationRepository) {
+		return args -> {
+			authentificationRepository.save(new Authentification("Nour Belyazidi","belyazidi1"));
+			authentificationRepository.save(new Authentification("admin","admin"));
+			authentificationRepository.save(new Authentification("user","user"));
+			authentificationRepository.save(new Authentification("admin1","admin1"));
+		};
+	}
+
+	SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+	//reservation
+	@Bean
+	CommandLineRunner runReservation(ReservationRepository reservationRepository) {
+		return args -> {
+			reservationRepository.save(new Reservation(null,2,1,"reservation-name",formatter.parse("10-06-2022" )));
+			reservationRepository.save(new Reservation(null,5,1,"reservation-name2",formatter.parse("20-07-2022" )));
+			reservationRepository.save(new Reservation(null,3,1,"reservation-name3",formatter.parse("15-05-2022" )));
+			reservationRepository.save(new Reservation(null,3,1,"reservation-name4",formatter.parse("05-05-2022" )));
+			reservationRepository.save(new Reservation(null,3,1,"reservation-name5",formatter.parse("07-05-2022" )));
+			reservationRepository.save(new Reservation(null,3,1,"reservation-name6",formatter.parse("23-05-2022" )));
+			reservationRepository.save(new Reservation(null,3,1,"reservation-name7",formatter.parse("14-05-2022" )));
+
+		};
+	}
+
+
+	//service
+	@Bean
+	CommandLineRunner runService(ServiceRepository serviceRepository) {
+		return args -> {
+			serviceRepository.save(new Service(null,"spa","bla bla",400.0));
+			serviceRepository.save(new Service(null,"7enna","bla bla",200.0));
+			serviceRepository.save(new Service(null,"soiriat","bla bla",1000.0));
+			serviceRepository.save(new Service(null,"ftour beldi","bla bla",100.0));
+			serviceRepository.save(new Service(null,"tssbin","bla bla",500.0));
+			serviceRepository.save(new Service(null,"internet","bla bla",300.0));
+		};
+	}
+
+	//type
+	@Bean
+	CommandLineRunner runType(TypeRepository typeRepository) {
+		return args -> {
+			typeRepository.save(new Type(null,"king","kbir",4,6));
+			typeRepository.save(new Type(null,"double","kbir bzzzzf",4,10));
+			typeRepository.save(new Type(null,"single","sgir",4,10));
+			typeRepository.save(new Type(null,"jana7","kbir bzzzzf",6,10));
+		};
+	}
 
 	@Bean
 	public CorsFilter corsFilter() {

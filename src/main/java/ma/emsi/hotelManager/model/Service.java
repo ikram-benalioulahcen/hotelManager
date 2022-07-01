@@ -25,5 +25,5 @@ public class Service {
 
     private String description;
 
-    private Long prix;
+    private double prix;
 }
