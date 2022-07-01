@@ -1,7 +1,9 @@
 package ma.emsi.hotelManager;
 
+import ma.emsi.hotelManager.model.Client;
 import ma.emsi.hotelManager.model.Employe;
 import ma.emsi.hotelManager.model.Facture;
+import ma.emsi.hotelManager.repository.ClientRepository;
 import ma.emsi.hotelManager.repository.EmployeRepository;
 import ma.emsi.hotelManager.repository.FactureRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -41,6 +43,14 @@ public class HotelManagerApplication {
 			factureRepository.save(new Facture(null,2000.0,0.0));
 			factureRepository.save(new Facture(null,3500.0,3000.0));
 			factureRepository.save(new Facture(null,2000.0,1000.0));
+		};
+	}
+
+	@Bean
+	CommandLineRunner runClient(ClientRepository clientRepository) {
+		return args -> {
+			clientRepository.save(new Client(null,"Adrian","Smith","Francais",false,"123456789","adrian@test.com",false,LocalDate.of(1995,12,5)));
+			clientRepository.save(new Client(null,"Nina","Hemsworth","Americain",true,"123456789","nina@test.com",true,LocalDate.of(1990,12,5)));
 		};
 	}
 
