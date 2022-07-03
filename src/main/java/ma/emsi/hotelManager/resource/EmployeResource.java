@@ -31,7 +31,7 @@ public class EmployeResource  {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(now())
-                        .data(of("employe", employeService.list(30)))
+                        .data(of("employes", employeService.list(30)))
                         .message("Employes retrieved")
                         .status(OK)
                         .statusCode(OK.value())

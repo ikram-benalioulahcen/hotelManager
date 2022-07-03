@@ -27,7 +27,7 @@ public class TypeResource  {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(now())
-                        .data(of("type", typeService.list(30)))
+                        .data(of("types", typeService.list(30)))
                         .message("types retrieved")
                         .status(OK)
                         .statusCode(OK.value())

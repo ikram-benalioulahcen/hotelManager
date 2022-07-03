@@ -25,30 +25,56 @@ public class ClientResource {
     private final ClientServiceImpl clientService;
 
     @GetMapping("/list")
-    public ResponseEntity<List<Client>> getClients() throws InterruptedException {
+    public ResponseEntity<Response> getClients() throws InterruptedException {
         TimeUnit.SECONDS.sleep(3);
         return ResponseEntity.ok(
-                clientService.list(30));
-
-
+                Response.builder()
+                        .timeStamp(now())
+                        .data(of("clients", clientService.list(30)))
+                        .message("clients retrieved")
+                        .status(OK)
+                        .statusCode(OK.value())
+                        .build()
+        );
     }
 
 
     @PostMapping("/save")
-    public ResponseEntity<Client> saveClient(@RequestBody @Valid Client client) {
+    public ResponseEntity<Response> saveClient(@RequestBody @Valid Client client) {
         return ResponseEntity.ok(
-                clientService.create(client));
+                Response.builder()
+                        .timeStamp(now())
+                        .data(of("client", clientService.create(client)))
+                        .message("client created")
+                        .status(OK)
+                        .statusCode(OK.value())
+                        .build()
+        );
     }
 
     @GetMapping("/get/{id}")
-    public ResponseEntity<Client> getClient(@PathVariable("id") Long id) {
+    public ResponseEntity<Response> getClient(@PathVariable("id") Long id) {
         return ResponseEntity.ok(
-                clientService.get(id)
+                Response.builder()
+                        .timeStamp(now())
+                        .data(of("client", clientService.get(id)))
+                        .message("client deleted")
+                        .status(OK)
+                        .statusCode(OK.value())
+                        .build()
         );
     }
 
     @GetMapping("/delete/{id}")
-    public ResponseEntity<Boolean> deleteClient(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(clientService.delete(id));
+    public ResponseEntity<Response> deleteClient(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(
+                Response.builder()
+                        .timeStamp(now())
+                        .data(of("deleted", clientService.delete(id)))
+                        .message("client deleted")
+                        .status(OK)
+                        .statusCode(OK.value())
+                        .build()
+        );
     }
 }

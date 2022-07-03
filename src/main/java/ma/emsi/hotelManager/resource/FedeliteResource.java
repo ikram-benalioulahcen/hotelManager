@@ -30,7 +30,7 @@ public class FedeliteResource {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(now())
-                        .data(of("fedelite", fedeliteService.list(30)))
+                        .data(of("fedelites", fedeliteService.list(30)))
                         .message("Fedelites retrieved")
                         .status(OK)
                         .statusCode(OK.value())
@@ -70,7 +70,7 @@ public class FedeliteResource {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(now())
-                        .data(of("fedelite", fedeliteService.delete(id)))
+                        .data(of("deleted", fedeliteService.delete(id)))
                         .message("Fedelite deleted")
                         .status(OK)
                         .statusCode(OK.value())

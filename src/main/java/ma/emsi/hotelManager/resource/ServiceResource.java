@@ -27,7 +27,7 @@ public class ServiceResource  {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(now())
-                        .data(of("service", serviceService.list(30)))
+                        .data(of("services", serviceService.list(30)))
                         .message("services retrieved")
                         .status(OK)
                         .statusCode(OK.value())

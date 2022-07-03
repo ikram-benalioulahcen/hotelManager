@@ -28,7 +28,7 @@ public class FactureResource {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(now())
-                        .data(of("facture", factureService.list(30)))
+                        .data(of("factures", factureService.list(30)))
                         .message("Factures retrieved")
                         .status(OK)
                         .statusCode(OK.value())
@@ -68,7 +68,7 @@ public class FactureResource {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(now())
-                        .data(of("facture", factureService.delete(id)))
+                        .data(of("deleted", factureService.delete(id)))
                         .message("Facture deleted")
                         .status(OK)
                         .statusCode(OK.value())

@@ -27,7 +27,7 @@ public class AuthentificationResource  {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(now())
-                        .data(of("authentification", authentificationService.list(30)))
+                        .data(of("authentifications", authentificationService.list(30)))
                         .message("authentifications retrieved")
                         .status(OK)
                         .statusCode(OK.value())

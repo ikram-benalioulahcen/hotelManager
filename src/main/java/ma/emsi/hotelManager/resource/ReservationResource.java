@@ -27,7 +27,7 @@ public class ReservationResource  {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(now())
-                        .data(of("reservation", reservationService.list(30)))
+                        .data(of("reservations", reservationService.list(30)))
                         .message("reservations retrieved")
                         .status(OK)
                         .statusCode(OK.value())
