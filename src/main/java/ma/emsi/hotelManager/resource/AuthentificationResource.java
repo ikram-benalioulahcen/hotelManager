@@ -50,11 +50,24 @@ public class AuthentificationResource  {
     }
 
     @GetMapping("/get/{id}")
-    public ResponseEntity<Response> getauthentification(@PathVariable("id") Long id) {
+    public ResponseEntity<Response> getauthentificationUsername(@PathVariable("id") Long id) {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(now())
                         .data(of("authentification", authentificationService.get(id)))
+                        .message("authentification retrieved")
+                        .status(OK)
+                        .statusCode(OK.value())
+                        .build()
+        );
+    }
+
+    @GetMapping("/getUser/{username}")
+    public ResponseEntity<Response> getauthentification(@PathVariable("username") String username) {
+        return ResponseEntity.ok(
+                Response.builder()
+                        .timeStamp(now())
+                        .data(of("authentification", authentificationService.getByUsername(username)))
                         .message("authentification retrieved")
                         .status(OK)
                         .statusCode(OK.value())

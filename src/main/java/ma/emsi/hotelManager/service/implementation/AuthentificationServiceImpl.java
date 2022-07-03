@@ -52,4 +52,9 @@ public class AuthentificationServiceImpl implements AuthentificationService {
         authentificationRepository.deleteById(id);
         return TRUE;
     }
+
+    @Override
+    public Authentification getByUsername(String username) {
+        return authentificationRepository.findByUsername(username);
+    }
 }

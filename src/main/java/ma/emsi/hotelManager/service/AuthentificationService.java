@@ -10,4 +10,5 @@ public interface AuthentificationService {
     Authentification get(Long id);
     Authentification update(Authentification authentification);
     Boolean delete(Long id);
+    Authentification getByUsername(String username);
 }
