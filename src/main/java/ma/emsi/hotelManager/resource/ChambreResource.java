@@ -69,7 +69,7 @@ public class ChambreResource {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(now())
-                        .data(of("deleted", chambreService.delete(id)))
+                        .data(of("chambre", chambreService.delete(id)))
                         .message("Chambre deleted")
                         .status(OK)
                         .statusCode(OK.value())

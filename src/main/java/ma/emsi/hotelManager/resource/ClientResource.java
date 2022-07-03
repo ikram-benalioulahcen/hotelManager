@@ -28,7 +28,7 @@ public class ClientResource {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(now())
-                        .data(of("client", clientService.list(30)))
+                        .data(of("clients", clientService.list(30)))
                         .message("Clients retrieved")
                         .status(OK)
                         .statusCode(OK.value())
