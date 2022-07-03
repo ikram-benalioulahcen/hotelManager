@@ -20,14 +20,13 @@ public class Reservation {
     @GeneratedValue(strategy =  AUTO)
     private Long id;
     private int duree;
-    private int checkIn;
-    private String nom;
+    private boolean checkIn;
     private Date dateReservation;
 
     @OneToOne
     private Facture facture;
 
-    @ManyToOne
+    @ManyToOne()
     private Employe employe;
 
     @ManyToOne
