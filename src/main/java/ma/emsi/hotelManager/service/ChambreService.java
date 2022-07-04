@@ -10,5 +10,5 @@ public interface ChambreService {
     Chambre get(Long id);
     Chambre update(Chambre chambre);
     Boolean delete(Long id);
-
+    List<Chambre> dispoList(int i);
 }

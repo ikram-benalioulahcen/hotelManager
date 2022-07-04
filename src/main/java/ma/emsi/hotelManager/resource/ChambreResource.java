@@ -37,6 +37,20 @@ public class ChambreResource {
         );
     }
 
+    @GetMapping("/dispoList")
+    public ResponseEntity<Response> getDispoChambres() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(3);
+        return ResponseEntity.ok(
+                Response.builder()
+                        .timeStamp(now())
+                        .data(of("chambres", chambreService.dispoList(30)))
+                        .message("Dispo Chambres retrieved")
+                        .status(OK)
+                        .statusCode(OK.value())
+                        .build()
+        );
+    }
+
 
     @PostMapping("/save")
     public ResponseEntity<Response> saveChambre(@RequestBody @Valid Chambre chambre) {

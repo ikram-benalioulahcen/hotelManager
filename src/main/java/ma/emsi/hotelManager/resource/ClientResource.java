@@ -68,10 +68,11 @@ public class ClientResource {
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Response> updateClient(@PathVariable("id") Long id, @RequestBody @Valid Client client) {
+
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(now())
-                        .data(of("client", clientService.update(client)))
+                        .data(of("client", clientService.update(id,client)))
                         .message("client updated")
                         .status(OK)
                         .statusCode(OK.value())

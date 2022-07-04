@@ -6,6 +6,7 @@ import ma.emsi.hotelManager.model.Client;
 import ma.emsi.hotelManager.model.Employe;
 import ma.emsi.hotelManager.repository.ClientRepository;
 import ma.emsi.hotelManager.service.ClientService;
+import org.springdoc.api.OpenApiResourceNotFoundException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
@@ -41,9 +42,13 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Client update(Client client) {
+    public Client update(Long id,Client client) {
         log.info("Updating Client");
-        return clientRepository.save(client);
+        Client old= clientRepository.findById(id).get();
+        old.setNom(client.getNom());
+        old.setPrenom(client.getPrenom());
+
+        return clientRepository.save(old);
     }
 
 

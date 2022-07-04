@@ -37,6 +37,12 @@ public class ChambreServiceImpl implements ChambreService {
     }
 
     @Override
+    public List<Chambre> dispoList(int limit) {
+        log.info("Showing Dispo Chambres");
+        return chambreRepository.findAll(PageRequest.of( 0, limit)).filter(Chambre::isDisponibilite).toList();
+    }
+
+    @Override
     public Chambre get(Long id) {
         log.info("getting chambre of id : "+ id);
         return chambreRepository.findById(id).get();
