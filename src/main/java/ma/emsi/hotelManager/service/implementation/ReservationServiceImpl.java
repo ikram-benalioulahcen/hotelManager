@@ -2,7 +2,9 @@ package ma.emsi.hotelManager.service.implementation;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import ma.emsi.hotelManager.model.Chambre;
 import ma.emsi.hotelManager.model.Reservation;
+import ma.emsi.hotelManager.repository.ChambreRepository;
 import ma.emsi.hotelManager.repository.ReservationRepository;
 import ma.emsi.hotelManager.service.ReservationService;
 import org.springframework.data.domain.PageRequest;
@@ -19,6 +21,7 @@ import static java.lang.Boolean.TRUE;
 @Slf4j
 public class ReservationServiceImpl implements ReservationService {
     private final ReservationRepository reservationRepository;
+    private final ChambreRepository chambreRepository;
 
     @Override
     public Reservation create(Reservation reservation) {
@@ -26,6 +29,13 @@ public class ReservationServiceImpl implements ReservationService {
         return reservationRepository.save(reservation);
     }
 
+    public Reservation createByCambre(Reservation reservation,Long id) {
+        log.info("Saving Reservation By Cambre");
+        Chambre c=chambreRepository.findById(id).get();
+        c.setDisponibilite(false);
+        c.setReservation(reservation);
+        return reservationRepository.save(reservation);
+    }
 
     @Override
     public List<Reservation> list(int limit) {

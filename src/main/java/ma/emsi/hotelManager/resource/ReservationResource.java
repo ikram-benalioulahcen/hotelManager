@@ -49,6 +49,19 @@ public class ReservationResource  {
         );
     }
 
+    @PostMapping("/add")
+    public ResponseEntity<Response> saveReservationByCambre(@RequestBody @Valid Reservation reservation,@PathVariable("id") Long id) {
+        return ResponseEntity.ok(
+                Response.builder()
+                        .timeStamp(now())
+                        .data(of("reservation", reservationService.createByCambre(reservation,id)))
+                        .message("reservation created")
+                        .status(CREATED)
+                        .statusCode(CREATED.value())
+                        .build()
+        );
+    }
+
     @GetMapping("/get/{id}")
     public ResponseEntity<Response> getreservation(@PathVariable("id") Long id) {
         return ResponseEntity.ok(
