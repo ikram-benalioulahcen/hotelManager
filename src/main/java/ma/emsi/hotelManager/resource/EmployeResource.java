@@ -66,6 +66,19 @@ public class EmployeResource  {
         );
     }
 
+     @PutMapping("/update/{id}")
+     public ResponseEntity<Response> updateEmploye(@PathVariable("id") Long id, @RequestBody @Valid Employe employe) {
+         return ResponseEntity.ok(
+                 Response.builder()
+                         .timeStamp(now())
+                         .data(of("employe", employeService.update(employe)))
+                         .message("Employe updated")
+                         .status(OK)
+                         .statusCode(OK.value())
+                         .build()
+         );
+     }
+
     @GetMapping("/delete/{id}")
     public ResponseEntity<Response> deleteEmploye(@PathVariable("id") Long id) {
         return ResponseEntity.ok(

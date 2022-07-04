@@ -2,6 +2,7 @@ package ma.emsi.hotelManager.resource;
 
 import lombok.RequiredArgsConstructor;
 import ma.emsi.hotelManager.model.Client;
+import ma.emsi.hotelManager.model.Employe;
 import ma.emsi.hotelManager.model.Response;
 import ma.emsi.hotelManager.service.implementation.ClientServiceImpl;
 import org.springframework.http.ResponseEntity;
@@ -46,7 +47,7 @@ public class ClientResource {
                         .timeStamp(now())
                         .data(of("client", clientService.create(client)))
                         .message("client created")
-                        .status(OK)
+                        .status(CREATED)
                         .statusCode(OK.value())
                         .build()
         );
@@ -58,7 +59,20 @@ public class ClientResource {
                 Response.builder()
                         .timeStamp(now())
                         .data(of("client", clientService.get(id)))
-                        .message("client deleted")
+                        .message("client found")
+                        .status(OK)
+                        .statusCode(OK.value())
+                        .build()
+        );
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Response> updateClient(@PathVariable("id") Long id, @RequestBody @Valid Client client) {
+        return ResponseEntity.ok(
+                Response.builder()
+                        .timeStamp(now())
+                        .data(of("client", clientService.update(client)))
+                        .message("client updated")
                         .status(OK)
                         .statusCode(OK.value())
                         .build()
